@@ -1,0 +1,28 @@
+{
+  "id": "page-stats",
+  "name": "Page Stats",
+  "description": "Read a web page and report its title and word count.",
+  "version": "0.1.0",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "userAgent": {
+        "type": "string",
+        "description": "Sent as the User-Agent header on every request."
+      },
+      "maxBytes": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "Stop reading the response body after this many bytes."
+      }
+    }
+  },
+  "activation": {
+    "onStartup": true
+  },
+  "contracts": {
+    "tools": [
+      "page_stats"
+    ]
+  }
+}

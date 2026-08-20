@@ -1,0 +1,61 @@
+identity:
+  name: page_stats
+  author: yansu
+  label:
+    en_US: Page Stats
+description:
+  human:
+    en_US: Read a web page and report its title and word count.
+  llm: >-
+    Fetch a web page over http or https and report its title and the number of
+    words in its body. Use it to check what a URL actually contains before
+    deciding whether to read the whole thing.
+parameters:
+  - name: url
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: URL
+    human_description:
+      en_US: Absolute http or https URL of the page to read.
+    llm_description: Absolute http or https URL of the page to read.
+  - name: timeout_seconds
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 60
+    precision: 0
+    form: llm
+    label:
+      en_US: Timeout (seconds)
+    human_description:
+      en_US: How long to wait for the response, in seconds.
+    llm_description: How long to wait for the response, in seconds. Between 1 and 60.
+output_schema:
+  type: object
+  properties:
+    ok:
+      type: boolean
+    url:
+      type: string
+    final_url:
+      type: string
+    status:
+      type: integer
+    content_type:
+      type: string
+    title:
+      type: [string, "null"]
+    word_count:
+      type: integer
+    truncated:
+      type: boolean
+    error_code:
+      type: string
+    message:
+      type: string
+extra:
+  python:
+    source: tools/page_stats.py

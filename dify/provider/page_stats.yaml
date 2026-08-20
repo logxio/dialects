@@ -1,0 +1,36 @@
+identity:
+  author: yansu
+  name: page_stats
+  label:
+    en_US: Page Stats
+  description:
+    en_US: Fetch a web page and report its title and body word count.
+  icon: icon.svg
+  tags:
+    - utilities
+
+# Provider-level settings. The installer fills these in once; the model never
+# sees them and cannot change them per call.
+credentials_for_provider:
+  user_agent:
+    type: text-input
+    required: false
+    default: dialects-page-stats/1.0
+    label:
+      en_US: User agent
+    help:
+      en_US: Sent as the User-Agent header on every request.
+  max_bytes:
+    type: text-input
+    required: false
+    default: "2000000"
+    label:
+      en_US: Maximum body bytes
+    help:
+      en_US: Stop reading the response body after this many bytes.
+
+tools:
+  - tools/page_stats.yaml
+extra:
+  python:
+    source: provider/page_stats.py
