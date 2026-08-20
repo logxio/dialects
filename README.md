@@ -184,8 +184,8 @@ and the model want different things from the same result.
 
 Dify is the only one of the three where the tool manifest declares the shape of
 what comes back. `output_schema` sits next to the parameter declarations in the
-tool YAML and is available to workflow nodes downstream. Nothing in the plugin
-SDK checks the yielded payload against it.
+tool YAML and is carried through into `ToolConfiguration`, so the platform has
+it. Nothing in the plugin SDK checks the yielded payload against it.
 
 ## Reporting failures
 
